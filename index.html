@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        function game(){
+            for(round = 1; round <= 5; round++){
+                const playerSelection = prompt("Rock, paper, or scissors?"); //needs input from user
+                //check if input is valid
+                //after input is valid, change it to lowercase
+                
+                const computerSelection = computerPlay();
+                
+                //if selection is the same, play again
+                
+                const winner = playRound(playerSelection, computerSelection) //gets winner
+                //add score (based on condition)
+
+                console.log(playRound(playerSelection, computerSelection)); //shows what was selected by each
+
+                //first to 3 wins
+            }
+        }
+
+        function computerPlay{
+            //choose a random selections
+            //return option
+        }
+
+        function playRound(playerSelection, computerSelection){
+            //compare options
+            //return winner
+        }
+        
+        
+    </script>
+</html>
