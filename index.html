@@ -2,17 +2,41 @@
 <html>
     <script>
         function game(){
+            let computerScore, playerScore = 0;
             for(round = 1; round <= 5; round++){
-                const playerSelection = prompt("Rock, paper, or scissors?"); //needs input from user
-                //check if input is valid
-                //after input is valid, change it to lowercase
                 
-                const computerSelection = computerPlay();
+                let check = False;
+                while(check == False){
+                    const computerSelection = computerPlay();
+                    const playerSelection = prompt("Rock, paper, or scissors?").toLowerCase; //gets input from user and turns it lowercase
+                        
+                    //checks if the selection is one of the right options, if it isn't repeats the question.
+                        if ((playerSelection == "rock") || (playerSelection == "paper") || (playerSelection == "scissors")){
+                            check = True; //once the selection is correct, it will break the loop
+                        }else{
+                            alert("Incorrect choice.")
+                        }
+                    //checks if player and computer selected the same thing    
+                        if (playerSelection == computerSelection){
+                            console.log("Computer also chose " + computerSelection + ", choose again.");
+                            check = False;
+                        }else{
+                            let winner = playRound(playerSelection, computerSelection);
+                            if (winner == "computer"){
+                                computerScore++;
+                                if (computerScore == 3){
+                                    return "Computer wins!";
+                                }
+                            }else{
+                                playerScore++;
+                                if (computerScore == 3){
+                                    return "Player wins!";
+                                }
+                            }
+                            console.log("Computer: " + computerScore + " Player: " + playerScore);
+                        }
                 
-                //if selection is the same, play again
-                
-                const winner = playRound(playerSelection, computerSelection) //gets winner
-                //add score (based on condition)
+                }
 
                 console.log(playRound(playerSelection, computerSelection)); //shows what was selected by each
 
@@ -21,8 +45,16 @@
         }
 
         function computerPlay{
-            //choose a random selections
+            var choice = Math.random() //choose a random selections
+            
             //return option
+            if (choice < 0.33){
+                return "rock";
+            }else if ((choice >= 0.33) && (choice < 0.66)){
+                return "paper";
+            }else{
+                return "scissors";
+            }
         }
 
         function playRound(playerSelection, computerSelection){
