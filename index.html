@@ -18,28 +18,28 @@
                             if ((playerSelection == "rock") || (playerSelection == "paper") || (playerSelection == "scissors")){
                                 check = true; //once the selection is correct, it will break the loop
                                 console.log("Computer: " + computerSelection + " Player: " + playerSelection);
+                                
+                                //checks if player and computer selected the same thing    
+                                if (playerSelection == computerSelection){
+                                    console.log("Tie! Play again.");
+                                    check = false;
+                                }else{
+                                    if (playRound(playerSelection, computerSelection) == "computer"){
+                                        computerScore++;
+                                        if (computerScore == 3){
+                                            return "Computer wins!";
+                                        }
+                                    }else{
+                                        playerScore++;
+                                        if (playerScore == 3){
+                                            return "Player wins!";
+                                        }
+                                    }
+                                    console.log("Computer: " + computerScore + " Player: " + playerScore);
+                                }
                             }else{
                                 console.log("Incorrect choice; please select again.");
                             }
-                        //checks if player and computer selected the same thing    
-                            if (playerSelection == computerSelection){
-                                console.log("Tie! Play again.");
-                                check = false;
-                            }else{
-                                if (playRound(playerSelection, computerSelection) == "computer"){
-                                    computerScore++;
-                                    if (computerScore == 3){
-                                        return "Computer wins!";
-                                    }
-                                }else{
-                                    playerScore++;
-                                    if (playerScore == 3){
-                                        return "Player wins!";
-                                    }
-                                }
-                                console.log("Computer: " + computerScore + " Player: " + playerScore);
-                            }
-                    
                     }
                  
 
