@@ -17,7 +17,7 @@
                         //checks if the selection is one of the right options, if it isn't, it repeats the question.
                             if ((playerSelection == "rock") || (playerSelection == "paper") || (playerSelection == "scissors")){
                                 check = true; //once the selection is correct, it will break the loop
-                                console.log("Computer: " + computerSelection + " Player: " + playerSelection);
+                                console.log("Computer: " + computerSelection + " You: " + playerSelection);
                                 
                                 //checks if player and computer selected the same thing    
                                 if (playerSelection == computerSelection){
@@ -27,15 +27,17 @@
                                     if (playRound(playerSelection, computerSelection) == "computer"){
                                         computerScore++;
                                         if (computerScore == 3){
+                                            console.log("Computer: " + computerScore + " You: " + playerScore);
                                             return "Computer wins!";
                                         }
                                     }else{
                                         playerScore++;
                                         if (playerScore == 3){
+                                            console.log("Computer: " + computerScore + " You: " + playerScore);
                                             return "Player wins!";
                                         }
                                     }
-                                    console.log("Computer: " + computerScore + " Player: " + playerScore);
+                                    console.log("Computer: " + computerScore + " You: " + playerScore);
                                 }
                             }else{
                                 console.log("Incorrect choice; please select again.");
