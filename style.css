@@ -1,9 +1,18 @@
 html {
     text-align: center;
+    background-color: rgb(255, 255, 197);
 }
 
 img {
     width: 13%;
     height: auto;
+    border: 1px solid black;
+}
+
+h1, h2 {
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.gamelog{
     border: 1px solid black;
 }
