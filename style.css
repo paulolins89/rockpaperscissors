@@ -3,7 +3,7 @@ html {
     background-color: rgb(255, 255, 197);
 }
 
-img {
+input {
     width: 13%;
     height: auto;
     border: 1px solid black;

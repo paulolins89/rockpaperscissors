@@ -13,18 +13,21 @@
         </div>
 
         <div class = 'choices'>
-            <img id = 'rockimg' class = 'choices' src = 'rps(2).png'>
-            <img id = 'paperimg' class = 'choices' src = 'rps.png'>
-            <img id = 'scissorsimg' class = 'choices' src = 'rps(1).png'>
+            <input type="image" id = 'rock' class = 'choices' src = 'rps(2).png' alt = "rock">
+            <input type="image" id = 'paper' class = 'choices' src = 'rps.png' alt = "paper">
+            <input type="image" id = 'scissors' class = 'choices' src = 'rps(1).png' alt = "scissors">
         </div>
 
         <div class = 'scores'>
-            <p>You: </p>
-            <p>Computer: </p>
+            <p id = playerScore>You: 0</p>
+            <p id = computerScore>Computer: 0</p>
         </div>
 
         <div class = 'gamelog'>
+            <p id = 'startParagraph'></p>
         </div>
-
+        
+        <script src = "rpsnew.js"></script>
+    
     </body>
 </html>
