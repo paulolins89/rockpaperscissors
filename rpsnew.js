@@ -8,7 +8,7 @@ inputs.forEach((input) => {
         const content = document.createElement('p');
         content.textContent = 'You selected ' + choice + '. Computer selected ' + computerChoice + '.';
         gamelog.appendChild(content);
-        playRound(choice, pcChoice);
+        playRound(choice, computerChoice);
     });
 });
 
@@ -25,7 +25,11 @@ function computerPlay(){
 }
 
 function playRound(playerSelection, computerSelection){
-    if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock")){
+    if (playerSelection == computerSelection){
+        const content = document.createElement('p');
+        content.textContent = "Tie!";
+        gamelog.appendChild(content);
+    }else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock")){
         changeScore('player');
     }else{
         changeScore('computer');
@@ -36,23 +40,21 @@ function changeScore(winner){
     const content = document.createElement('p');
     if (winner == 'player'){
         const playerText = document.querySelector('#playerScore');
-        const text = document.getElementById('playerScore').textContent;
-        let score = parseInt(text.slice(-1));
+        let score = parseInt(document.getElementById('playerScore').textContent.slice(-1));
         score++;
         playerText.textContent = "You: " + score;
         if (score == 5){
-            content.textContent = "You win!";
+            content.textContent = "You win!!!";
         }else{
             content.textContent = 'You win this round!';
         }
     }else{
         const computerText = document.querySelector('#computerScore');
-        const text = document.getElementById('computerScore').textContent;
-        let score = parseInt(text.slice(-1));
+        let score = parseInt(document.getElementById('computerScore').textContent.slice(-1));
         score++;
         computerText.textContent = "Computer: " + score;
         if (score == 5){
-            content.textContent = 'Computer wins';
+            content.textContent = 'Computer wins!!!';
         }else{
             content.textContent = 'Computer wins this round!';
         }
