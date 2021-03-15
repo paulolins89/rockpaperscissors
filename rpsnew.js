@@ -12,8 +12,7 @@ inputs.forEach((input) => {
             gamelog.insertBefore(content, gamelog.firstElementChild);
             playRound(choice, computerChoice);
         }else{
-            content.textContent = 'The game is over!';
-            gamelog.insertBefore(content, gamelog.firstElementChild);
+            //does nothing...
         }
     });
 });
