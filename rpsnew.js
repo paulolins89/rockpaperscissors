@@ -27,9 +27,7 @@ function computerPlay(){
 
 function playRound(playerSelection, computerSelection){
     if (playerSelection == computerSelection){
-        const content = document.createElement('p');
-        content.textContent = "Tie!";
-        gamelog.appendChild(content);
+        document.getElementsByTagName("li")[0].textContent += " Tie!";
     }else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock")){
         changeScore('player');
     }else{
@@ -45,10 +43,10 @@ function changeScore(winner){
         score++;
         playerText.textContent = "You: " + score;
         if (score == 5){
-            content.textContent = "You win!!!";
+            document.getElementsByTagName("li")[0].textContent += ' You win!!!';
             playAgain('player');
         }else{
-            content.textContent = 'You win this round!';
+            document.getElementsByTagName("li")[0].textContent += ' You win this round!';
         }
     }else{
         const computerText = document.querySelector('#computerScore');
@@ -56,10 +54,10 @@ function changeScore(winner){
         score++;
         computerText.textContent = "Computer: " + score;
         if (score == 5){
-            content.textContent = 'Computer wins!!!';
+            document.getElementsByTagName("li")[0].textContent += ' Computer wins!!!';
             playAgain('computer');
         }else{
-            content.textContent = 'Computer wins this round!';
+            document.getElementsByTagName("li")[0].textContent += ' Computer wins this round!';
         }
     }
     gamelog.appendChild(content);
