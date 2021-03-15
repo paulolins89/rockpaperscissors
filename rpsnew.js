@@ -1,13 +1,14 @@
 const inputs = document.querySelectorAll('input');
 const gamelog = document.querySelector('.gamelog');
+const scores = document.querySelector('.scores');
 
 inputs.forEach((input) => {
     input.addEventListener('click', e => {
         const choice = e.target.id;
         const computerChoice = computerPlay();
-        const content = document.createElement('p');
+        const content = document.createElement('li');
         content.textContent = 'You selected ' + choice + '. Computer selected ' + computerChoice + '.';
-        gamelog.appendChild(content);
+        gamelog.insertBefore(content, gamelog.firstElementChild);
         playRound(choice, computerChoice);
     });
 });
@@ -45,6 +46,7 @@ function changeScore(winner){
         playerText.textContent = "You: " + score;
         if (score == 5){
             content.textContent = "You win!!!";
+            playAgain('player');
         }else{
             content.textContent = 'You win this round!';
         }
@@ -55,9 +57,22 @@ function changeScore(winner){
         computerText.textContent = "Computer: " + score;
         if (score == 5){
             content.textContent = 'Computer wins!!!';
+            playAgain('computer');
         }else{
             content.textContent = 'Computer wins this round!';
         }
     }
     gamelog.appendChild(content);
+}
+
+function playAgain(winner){
+    const playAgain = document.createElement('button');
+    playAgain.setAttribute("onClick","window.location.reload()")
+    if (winner == 'player'){
+        playAgain.textContent = 'Click here to beat it again!';
+    }else{
+        playAgain.textContent = 'Click here to get your revenge!';
+    }
+    
+    scores.appendChild(playAgain);
 }
