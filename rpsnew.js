@@ -7,9 +7,14 @@ inputs.forEach((input) => {
         const choice = e.target.id;
         const computerChoice = computerPlay();
         const content = document.createElement('li');
-        content.textContent = 'You selected ' + choice + '. Computer selected ' + computerChoice + '.';
-        gamelog.insertBefore(content, gamelog.firstElementChild);
-        playRound(choice, computerChoice);
+        if (getScore() == false){
+            content.textContent = 'You selected ' + choice + '. Computer selected ' + computerChoice + '.';
+            gamelog.insertBefore(content, gamelog.firstElementChild);
+            playRound(choice, computerChoice);
+        }else{
+            content.textContent = 'The game is over!';
+            gamelog.insertBefore(content, gamelog.firstElementChild);
+        }
     });
 });
 
@@ -35,8 +40,19 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
+function getScore(){
+    const playerText = document.querySelector('#playerScore');
+    const computerText = document.querySelector('#computerScore');
+    let playerScore = parseInt(document.getElementById('playerScore').textContent.slice(-1));
+    let computerScore = parseInt(document.getElementById('computerScore').textContent.slice(-1));
+    if ((playerScore == 5) || (computerScore == 5)){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 function changeScore(winner){
-    const content = document.createElement('p');
     if (winner == 'player'){
         const playerText = document.querySelector('#playerScore');
         let score = parseInt(document.getElementById('playerScore').textContent.slice(-1));
@@ -60,7 +76,6 @@ function changeScore(winner){
             document.getElementsByTagName("li")[0].textContent += ' Computer wins this round!';
         }
     }
-    gamelog.appendChild(content);
 }
 
 function playAgain(winner){
